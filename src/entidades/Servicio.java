@@ -1,13 +1,12 @@
 package entidades;
 
 import enumerados.Oficio;
-import interfaz.Contratable;
 
-public abstract class Servicio implements Contratable {
+public abstract class Servicio {
 	
 	// Atributos
+	protected String nombre;
 	protected Oficio oficio;
-	protected boolean esUrgente;
 	
 	// Metodos
 	public abstract Double costo();
