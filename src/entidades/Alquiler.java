@@ -11,7 +11,7 @@ public class Alquiler implements Contratable{
 	// Atributos
 	private LocalDate diaDeInicio;
 	private LocalDate diaDeFin;
-	private Optional<LocalDate> diaDevolucion;
+	private Optional<LocalDate> diaDevolucion = Optional.empty();
 	private Herramienta Herramienta;
 	
 	// Constructor
@@ -42,5 +42,15 @@ public class Alquiler implements Contratable{
 		}
 		
 		return resultado;
+	}
+
+	@Override
+	public Boolean finalizado() {
+		return diaDevolucion.isPresent();
+	}
+
+	@Override
+	public void finalizar() {
+		diaDevolucion = Optional.of(LocalDate.now());		
 	}
 }
