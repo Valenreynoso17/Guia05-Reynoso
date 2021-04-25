@@ -1,20 +1,46 @@
 package entidades;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.time.Period;
+import java.util.Optional;
 
 import interfaz.Contratable;
 
 public class Alquiler implements Contratable{
-	
+
 	// Atributos
 	private LocalDate diaDeInicio;
 	private LocalDate diaDeFin;
-	private LocalDate diaDevolucion;
-	private ArrayList<Herramienta> listaHerramientas = new ArrayList<>(); // se puede hacer como una sola herramienta
+	private Optional<LocalDate> diaDevolucion;
+	private Herramienta Herramienta;
+	
+	// Constructor
+	public Alquiler(LocalDate diaDeInicio, LocalDate diaDeFin, Herramienta herramienta) {
+		super();
+		this.diaDeInicio = diaDeInicio;
+		this.diaDeFin = diaDeFin;
+		this.Herramienta = herramienta;
+	}
 
 	@Override
 	public Double costo() {
-		return null;
+		
+		Double resultado = 0.0;		
+		Period diasEntre = Period.between(diaDeInicio, diaDevolucion.orElse(LocalDate.now())).plusDays(1);
+		
+		resultado = this.Herramienta.getCostoPorDia() * diasEntre.getDays();
+		
+		return resultado;
+	}
+	
+	public Boolean enMora() {
+		
+		Boolean resultado = false;
+		
+		if(diaDevolucion.orElse(LocalDate.now()).isAfter(diaDeFin)) {
+			resultado = true;
+		}
+		
+		return resultado;
 	}
 }

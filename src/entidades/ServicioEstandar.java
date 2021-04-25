@@ -12,8 +12,7 @@ public class ServicioEstandar extends Servicio{
 
 	@Override
 	public Double costo() {
-		// TODO debo sumarle lo que cobra el trabajador
-		return null;
+		return this.costoBase;
 	}
 
 }

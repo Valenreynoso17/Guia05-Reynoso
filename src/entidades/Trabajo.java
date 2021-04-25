@@ -1,17 +1,17 @@
 package entidades;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import interfaz.Contratable;
 
 public class Trabajo implements Contratable{
 	
 	// Atributos
-	private Trabajador trabajador; // TODO: no se que tan necesario es esto si ya el trabajador tienen una lista con los trabajos asignados
+	private Trabajador trabajador; 
 	private Servicio servicio;
-	protected boolean esUrgente;
+	protected Boolean esUrgente;
 	private String direccion;
-	private LocalDateTime fechaRealizacion;
+	private LocalDate fechaRealizacion;
 	
 	// Metodos
 	
@@ -19,8 +19,11 @@ public class Trabajo implements Contratable{
 	public Double costo() {
 		
 		Double resultado = 0.0;
+		resultado += servicio.costo();
 		
-		
+		if(this.esUrgente) {
+			resultado *= 1.50;
+		}
 		return resultado;
 	}
 }
