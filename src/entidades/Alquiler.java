@@ -21,14 +21,20 @@ public class Alquiler implements Contratable{
 		this.diaDeFin = diaDeFin;
 		this.Herramienta = herramienta;
 	}
+	
+	public Alquiler(LocalDate diaDeInicio, Integer cantDias, Herramienta herramienta) {
+		super();
+		this.diaDeInicio = diaDeInicio;
+		this.diaDeFin = diaDeInicio.plusDays(cantDias);
+		this.Herramienta = herramienta;
+	}
 
 	@Override
 	public Double costo() {
 		
-		Double resultado = 0.0;		
 		Period diasEntre = Period.between(diaDeInicio, diaDevolucion.orElse(LocalDate.now())).plusDays(1);
 		
-		resultado = this.Herramienta.getCostoPorDia() * diasEntre.getDays();
+		Double resultado = this.Herramienta.getCostoPorDia() * diasEntre.getDays();
 		
 		return resultado;
 	}

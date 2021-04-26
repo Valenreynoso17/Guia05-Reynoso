@@ -9,7 +9,6 @@ import interfaz.Contratable;
 public class Trabajo implements Contratable{
 
 	// Atributos
-	private Trabajador trabajador; 
 	private Servicio servicio;
 	protected Boolean esUrgente;
 	private String direccion;
@@ -17,9 +16,8 @@ public class Trabajo implements Contratable{
 	private Optional<LocalDate> fechaFin = Optional.empty();
 	
 	// Constructor
-	public Trabajo(Trabajador trabajador, Servicio servicio, Boolean esUrgente, String direccion, LocalDate fechaInicio) {
+	public Trabajo(Servicio servicio, Boolean esUrgente, String direccion, LocalDate fechaInicio) {
 		super();
-		this.trabajador = trabajador;
 		this.servicio = servicio;
 		this.esUrgente = esUrgente;
 		this.direccion = direccion;
@@ -27,9 +25,10 @@ public class Trabajo implements Contratable{
 	}
 	
 	// Metodos
-	public LocalDate getFechaInicio() {
+	private LocalDate getFechaInicio() {
 		return fechaInicio;
 	}
+	
 	@Override
 	public Double costo() {
 		
@@ -39,6 +38,7 @@ public class Trabajo implements Contratable{
 		if(this.esUrgente) {
 			resultado *= 1.50;
 		}
+		
 		return resultado;
 	}
 
@@ -53,6 +53,10 @@ public class Trabajo implements Contratable{
 	}
 	
 	public Boolean mismoOficio(Oficio o) {
-		return o == this.servicio.getOficio();
+		return o == servicio.getOficio();
+	}
+	
+	public Boolean mismaFecha(Trabajo t) {
+		return this.getFechaInicio().equals(t.getFechaInicio());
 	}
 }
