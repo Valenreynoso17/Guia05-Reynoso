@@ -53,4 +53,9 @@ public class Alquiler implements Contratable{
 	public void finalizar() {
 		diaDevolucion = Optional.of(LocalDate.now());		
 	}
+	
+	@Override
+	public Boolean alquilerFinalizado() {
+		return this.finalizado();
+	}
 }
