@@ -10,4 +10,7 @@ public abstract class Servicio {
 	
 	// Metodos
 	public abstract Double costo();
+	public Oficio getOficio() {
+		return oficio;
+	}
 }

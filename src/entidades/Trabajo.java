@@ -3,6 +3,7 @@ package entidades;
 import java.time.LocalDate;
 import java.util.Optional;
 
+import enumerados.Oficio;
 import interfaz.Contratable;
 
 public class Trabajo implements Contratable{
@@ -12,7 +13,7 @@ public class Trabajo implements Contratable{
 	private Servicio servicio;
 	protected Boolean esUrgente;
 	private String direccion;
-	private LocalDate fechaInicio;
+	private LocalDate fechaInicio; // Me parecio más correcto que haya una fecha de inicio y una de fin (Aunque me trae unos problemas más adelante)
 	private Optional<LocalDate> fechaFin = Optional.empty();
 	
 	// Constructor
@@ -26,7 +27,9 @@ public class Trabajo implements Contratable{
 	}
 	
 	// Metodos
-	
+	public LocalDate getFechaInicio() {
+		return fechaInicio;
+	}
 	@Override
 	public Double costo() {
 		
@@ -47,5 +50,9 @@ public class Trabajo implements Contratable{
 	@Override
 	public void finalizar() {
 		fechaFin = Optional.of(LocalDate.now());
+	}
+	
+	public Boolean mismoOficio(Oficio o) {
+		return o == this.servicio.getOficio();
 	}
 }
