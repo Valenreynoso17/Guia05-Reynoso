@@ -4,15 +4,24 @@ import enumerados.Oficio;
 
 public class ServicioPersonalizado extends Servicio{
 
-	public ServicioPersonalizado(String nombre, Oficio oficio, String descripcion) {
+	// Atributos
+	private Double valorPresupuestado;
+	private Double costoMateriales;
+	private Double costoTransporte;
+	
+	// Constructor
+	public ServicioPersonalizado(String nombre, Oficio oficio, String descripcion,
+								Double valorPresupuestado, Double costoMateriales, Double costoTransporte) {
 		super(nombre, oficio, descripcion);
-		// TODO Falta agregar los otros atributos que tendría
+		this.valorPresupuestado = valorPresupuestado;
+		this.costoMateriales = costoMateriales;
+		this.costoTransporte = costoTransporte;
 	}
 
+	// Métodos
 	@Override
 	public Double costo() {
-		// TODO Auto-generated method stub
-		return null;
+		return valorPresupuestado + costoMateriales + costoTransporte;
 	}
 
 }

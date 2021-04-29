@@ -9,14 +9,14 @@ public abstract class Servicio {
 	protected Oficio oficio;
 	protected String descripcion;
 	
-	
+	// Constructor
 	public Servicio(String nombre, Oficio oficio, String descripcion) {
 		super();
 		this.nombre = nombre;
 		this.oficio = oficio;
 		this.descripcion = descripcion;
 	}
-	// Metodos
+	// Métodos
 	public abstract Double costo();
 	public Oficio getOficio() {
 		return oficio;

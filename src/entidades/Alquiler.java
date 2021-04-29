@@ -21,22 +21,17 @@ public class Alquiler implements Contratable{
 		this.diaDeFin = diaDeFin;
 		this.Herramienta = herramienta;
 	}
-	
-	public Alquiler(LocalDate diaDeInicio, Integer cantDias, Herramienta herramienta) {
-		super();
-		this.diaDeInicio = diaDeInicio;
-		this.diaDeFin = diaDeInicio.plusDays(cantDias);
-		this.Herramienta = herramienta;
-	}
 
+	// Métodos
 	@Override
 	public Double costo() {
 		
-		Period diasEntre = Period.between(diaDeInicio, diaDevolucion.orElse(LocalDate.now())).plusDays(1);
+		/* Le sumo un dia ya que por ejemplo si te piden una herramienta por un par de horas,
+		 * se tendría que calcular como que la pediste por todo el dia, pero el metodo between devolvería 0
+		*/
+		Period diasEntre = Period.between(diaDeInicio, diaDevolucion.orElse(LocalDate.now())).plusDays(1); 	
 		
-		Double resultado = this.Herramienta.getCostoPorDia() * diasEntre.getDays();
-		
-		return resultado;
+		return this.Herramienta.getCostoPorDia() * diasEntre.getDays();
 	}
 	
 	public Boolean enMora() {
@@ -61,7 +56,7 @@ public class Alquiler implements Contratable{
 	}
 	
 	@Override
-	public Boolean alquilerFinalizado() {
-		return this.finalizado();
+	public Boolean esAlquilerNoFinalizado() {
+		return !this.finalizado();
 	}
 }

@@ -10,9 +10,9 @@ public class Trabajo implements Contratable{
 
 	// Atributos
 	private Servicio servicio;
-	protected Boolean esUrgente;
+	private Boolean esUrgente;
 	private String direccion;
-	private LocalDate fechaInicio; // Me parecio más correcto que haya una fecha de inicio y una de fin (Aunque me trae unos problemas más adelante)
+	private LocalDate fechaInicio;
 	private Optional<LocalDate> fechaFin = Optional.empty();
 	
 	// Constructor
@@ -24,20 +24,14 @@ public class Trabajo implements Contratable{
 		this.fechaInicio = fechaInicio;
 	}
 	
-	// Metodos
-	private LocalDate getFechaInicio() {
-		return fechaInicio;
-	}
-	
+	// Metodos	
 	@Override
 	public Double costo() {
 		
 		Double resultado = 0.0;
 		resultado += servicio.costo();
 		
-		if(this.esUrgente) {
-			resultado *= 1.50;
-		}
+		if(this.esUrgente) resultado *= 1.50;
 		
 		return resultado;
 	}
@@ -58,5 +52,9 @@ public class Trabajo implements Contratable{
 	
 	public Boolean mismaFecha(Trabajo t) {
 		return this.getFechaInicio().equals(t.getFechaInicio());
+	}
+	
+	private LocalDate getFechaInicio() {
+		return fechaInicio;
 	}
 }
