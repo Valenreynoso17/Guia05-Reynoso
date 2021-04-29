@@ -13,7 +13,7 @@ public class Trabajador {
 	private String nombreApellido;
 	private String email;
 	private Oficio oficio;
-	private Double costoPorHora; // TODO: checkear que para calcular el costo debo tener LocalDateTime
+	private Double costoPorHora; 
 	
 	// Constructor
 	public Trabajador(String nombreApellido, String email, Oficio oficio, Double costoPorHora, Double porcentajeComision) {

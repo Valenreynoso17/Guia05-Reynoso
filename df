@@ -1,0 +1,26 @@
+[1mdiff --git a/src/entidades/Trabajador.java b/src/entidades/Trabajador.java[m
+[1mindex 63bc35a..ec1d289 100644[m
+[1m--- a/src/entidades/Trabajador.java[m
+[1m+++ b/src/entidades/Trabajador.java[m
+[36m@@ -13,7 +13,7 @@[m [mpublic class Trabajador {[m
+ 	private String nombreApellido;[m
+ 	private String email;[m
+ 	private Oficio oficio;[m
+[31m-	private Double costoPorHora; // TODO: checkear que para calcular el costo debo tener LocalDateTime[m
+[32m+[m	[32mprivate Double costoPorHora;[m[41m [m
+ 	[m
+ 	// Constructor[m
+ 	public Trabajador(String nombreApellido, String email, Oficio oficio, Double costoPorHora, Double porcentajeComision) {[m
+[1mdiff --git a/src/interfaz/Contratable.java b/src/interfaz/Contratable.java[m
+[1mindex c0bb0da..d10e151 100644[m
+[1m--- a/src/interfaz/Contratable.java[m
+[1m+++ b/src/interfaz/Contratable.java[m
+[36m@@ -5,7 +5,7 @@[m [mpublic interface Contratable {[m
+ 	public Boolean finalizado();[m
+ 	public void finalizar(); 	/* Me pareció correcto agregar[m
+ 	 							* un método para finalizar un trabajo[m
+[31m-	 							* o un servicio, indicandoles la fecha de fin*/[m
+[32m+[m	[41m [m							[32m* o un servicio, seteando la fecha de fin */[m
+ 	public default Boolean esAlquilerNoFinalizado() {[m
+ 		return false;								[m
+ 	}[m
