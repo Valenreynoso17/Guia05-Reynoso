@@ -17,6 +17,7 @@ public class ServicioEstandar extends Servicio{
 		
 	}
 
+	// Métodos
 	@Override
 	public Double costo() {
 		return this.costoBase + this.costoBase*this.comisionManoDeObra;
